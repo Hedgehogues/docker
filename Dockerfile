@@ -2,7 +2,7 @@ FROM openjdk:8-jdk-stretch
 
 RUN apt-get update && apt-get upgrade -y && apt-get install -y git curl && rm -rf /var/lib/apt/lists/*
 
-ARG user=jenkins
+ARG user=0
 ARG group=jenkins
 ARG uid=1000
 ARG gid=1000
