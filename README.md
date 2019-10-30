@@ -1,3 +1,7 @@
+# Additional
+
+This is my fork for my custom needs. I made docker-oo-docker for building docker with my jenkins' jobs.
+
 # Official Jenkins Docker image
 
 [![Docker Stars](https://img.shields.io/docker/stars/jenkins/jenkins.svg)](https://hub.docker.com/r/jenkins/jenkins/)
