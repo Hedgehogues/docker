@@ -1,6 +1,6 @@
 # Additional
 
-This is my fork for my custom needs. I made docker-oo-docker for building docker with my jenkins' jobs.
+This is my fork for my custom needs. I made [docker-oo-docker](http://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/) for building docker with my jenkins' jobs.
 
 # Official Jenkins Docker image
 
