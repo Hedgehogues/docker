@@ -2,6 +2,7 @@ FROM openjdk:8-jdk-stretch
 
 RUN apt-get update && apt-get upgrade -y && apt-get install -y git curl && rm -rf /var/lib/apt/lists/*
 
+# You can see my question at stackoverflow https://ru.stackoverflow.com/questions/1038798/jenkins-%d0%bd%d0%b5-%d1%81%d0%be%d1%85%d1%80%d0%b0%d0%bd%d1%8f%d0%b5%d1%82-%d0%b8%d0%b7%d0%bc%d0%b5%d0%bd%d0%b5%d0%bd%d0%b8%d1%8f-%d0%bf%d0%be%d1%81%d0%bb%d0%b5-%d0%be%d1%81%d1%82%d0%b0%d0%bd%d0%be%d0%b2%d0%ba%d0%b8-%d0%ba%d0%be%d0%bd%d1%82%d0%b5%d0%b9%d0%bd%d0%b5%d1%80%d0%b0
 ARG user=0
 ARG group=jenkins
 ARG uid=1000
@@ -80,3 +81,20 @@ ENTRYPOINT ["/sbin/tini", "--", "/usr/local/bin/jenkins.sh"]
 # from a derived Dockerfile, can use `RUN plugins.sh active.txt` to setup ${REF}/plugins from a support bundle
 COPY plugins.sh /usr/local/bin/plugins.sh
 COPY install-plugins.sh /usr/local/bin/install-plugins.sh
+
+
+
+
+# Code next intend of solve Docker-in-Docker problem. Notice: this is Docker-outside-of-Docker.
+# You can read some 
+USER root
+RUN apt-get update -qq \
+    && apt-get install -qqy apt-transport-https ca-certificates curl gnupg2 software-properties-common 
+RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
+RUN add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/debian \
+   $(lsb_release -cs) \
+   stable"
+RUN apt-get update  -qq \
+    && apt-get install docker-ce=17.12.1~ce-0~debian -y
+RUN usermod -aG docker jenkins
