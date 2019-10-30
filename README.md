@@ -2,6 +2,11 @@
 
 This is my fork for my custom needs. I made [docker-oo-docker](http://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/) for building docker with my jenkins' jobs.
 
+Changes:
+
+* Dockerfile
+* docker-compose.yml
+
 # Official Jenkins Docker image
 
 [![Docker Stars](https://img.shields.io/docker/stars/jenkins/jenkins.svg)](https://hub.docker.com/r/jenkins/jenkins/)
