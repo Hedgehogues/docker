@@ -86,7 +86,11 @@ COPY install-plugins.sh /usr/local/bin/install-plugins.sh
 
 
 # Code next intend of solve Docker-in-Docker problem. Notice: this is Docker-outside-of-Docker.
-# You can read some 
+# You can read some papers:
+# http://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/
+# https://github.com/jpetazzo/dind
+# https://medium.com/@manav503/how-to-build-docker-images-inside-a-jenkins-container-d59944102f30
+# https://medium.com/faun/using-docker-in-jenkins-cba6b8070756
 USER root
 RUN apt-get update -qq \
     && apt-get install -qqy apt-transport-https ca-certificates curl gnupg2 software-properties-common 
